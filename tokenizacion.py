@@ -4,14 +4,10 @@ import spacy
 from nltk.stem import SnowballStemmer
 import nltk
 
-
-import nltk
-nltk.download('punkt_tab')
-nltk.download('stopwords')
-
-
 # Descargar recursos necesarios
 nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('stopwords')
 
 # Cargar modelo de spaCy en español
 nlp = spacy.load("es_core_news_sm")
@@ -27,9 +23,21 @@ def tokenizar():
 
 def normalizar():
     texto = entrada.get("1.0", tk.END)
-    texto_norm = texto.lower().strip()
-    salida.delete("1.0", tk.END)
-    salida.insert(tk.END, "Texto normalizado:\n" + texto_norm)
+    if texto.strip():
+        # Conversión a minúsculas
+        texto_norm = texto.lower()
+
+        # Reemplazo de acentos
+        reemplazos = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "ü": "u"}
+        for origen, destino in reemplazos.items():
+            texto_norm = texto_norm.replace(origen, destino)
+
+        # Quitar signos de puntuación comunes
+        for signo in [".", ",", "!", "¡", "?", "¿", "(", ")", ";", ":","_"]:
+            texto_norm = texto_norm.replace(signo, "")
+
+        salida.delete("1.0", tk.END)
+        salida.insert(tk.END, "Texto normalizado:\n" + texto_norm)
 
 def lematizar():
     texto = entrada.get("1.0", tk.END)
