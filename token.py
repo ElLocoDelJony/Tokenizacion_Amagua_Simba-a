@@ -22,13 +22,121 @@ def aplicar_tokenizar():
 def aplicar_normalizacion():
     texto = obtener_texto()
     if texto:
+        # Conversión a minúsculas
         texto_norm = texto.lower()
+
+        # Reemplazo de acentos
         reemplazos = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "ü": "u"}
         for origen, destino in reemplazos.items():
             texto_norm = texto_norm.replace(origen, destino)
-        for signo in [".", ",", "!", "¡", "?", "¿", "(", ")"]:
+
+        # Quitar signos de puntuación comunes
+        for signo in [".", ",", "!", "¡", "?", "¿", "(", ")", ";", ":"]:
             texto_norm = texto_norm.replace(signo, "")
-        mostrar_resultado("NORMALIZACIÓN", texto_norm)
+
+        # Diccionario de abreviaciones (ejemplo con ~100 entradas)
+        abreviaciones = {
+            "epn": "escuela politécnica nacional",
+            "unesco": "organización de las naciones unidas para la educación la ciencia y la cultura",
+            "onu": "organización de las naciones unidas",
+            "oms": "organización mundial de la salud",
+            "oea": "organización de estados americanos",
+            "ue": "unión europea",
+            "eeuu": "estados unidos",
+            "nasa": "national aeronautics and space administration",
+            "fbi": "federal bureau of investigation",
+            "cia": "central intelligence agency",
+            "mit": "massachusetts institute of technology",
+            "ai": "inteligencia artificial",
+            "ml": "machine learning",
+            "nlp": "procesamiento de lenguaje natural",
+            "sql": "structured query language",
+            "html": "hypertext markup language",
+            "css": "cascading style sheets",
+            "js": "javascript",
+            "api": "application programming interface",
+            "http": "hypertext transfer protocol",
+            "ip": "internet protocol",
+            "url": "uniform resource locator",
+            "www": "world wide web",
+            "pdf": "portable document format",
+            "cpu": "unidad central de procesamiento",
+            "gpu": "unidad de procesamiento gráfico",
+            "ram": "memoria de acceso aleatorio",
+            "rom": "memoria de solo lectura",
+            "usb": "universal serial bus",
+            "lan": "local area network",
+            "wan": "wide area network",
+            "vpn": "virtual private network",
+            "iot": "internet de las cosas",
+            "vr": "realidad virtual",
+            "ar": "realidad aumentada",
+            "mr": "realidad mixta",
+            "ux": "experiencia de usuario",
+            "ui": "interfaz de usuario",
+            "qa": "quality assurance",
+            "pm": "project manager",
+            "ceo": "chief executive officer",
+            "cfo": "chief financial officer",
+            "cto": "chief technology officer",
+            "hr": "recursos humanos",
+            "kpi": "key performance indicator",
+            "roi": "return on investment",
+            "b2b": "business to business",
+            "b2c": "business to consumer",
+            "p2p": "peer to peer",
+            "saas": "software as a service",
+            "paas": "platform as a service",
+            "iaas": "infrastructure as a service",
+            "erp": "enterprise resource planning",
+            "crm": "customer relationship management",
+            "bi": "business intelligence",
+            "etl": "extract transform load",
+            "csv": "comma separated values",
+            "json": "javascript object notation",
+            "xml": "extensible markup language",
+            "dl": "deep learning",
+            "cv": "computer vision",
+            "ocr": "optical character recognition",
+            "rpa": "robotic process automation",
+            "dns": "domain name system",
+            "smtp": "simple mail transfer protocol",
+            "ftp": "file transfer protocol",
+            "ssh": "secure shell",
+            "ssl": "secure sockets layer",
+            "tls": "transport layer security",
+            "mba": "master of business administration",
+            "phd": "doctor of philosophy",
+            "bsc": "bachelor of science",
+            "msc": "master of science",
+            "ba": "bachelor of arts",
+            "ma": "master of arts",
+            "llm": "master of laws",
+            "jd": "juris doctor",
+            "md": "doctor of medicine",
+            "rn": "registered nurse",
+            "ngo": "organización no gubernamental",
+            "gdp": "producto interno bruto",
+            "gnp": "producto nacional bruto",
+            "unicef": "fondo de las naciones unidas para la infancia",
+            "wto": "world trade organization",
+            "imf": "international monetary fund",
+            "wb": "world bank",
+            "oecd": "organisation for economic co operation and development",
+            "opec": "organization of the petroleum exporting countries",
+            "cop": "conference of the parties",
+            "ipcc": "intergovernmental panel on climate change",
+            "sdg": "sustainable development goals",
+            "csr": "corporate social responsibility"
+        }
+
+        # Expandir abreviaciones
+        palabras = texto_norm.split()
+        palabras_expandidas = [abreviaciones.get(p, p) for p in palabras]
+        texto_final = " ".join(palabras_expandidas)
+
+        mostrar_resultado("NORMALIZACIÓN", texto_final)
+
 
 def aplicar_lematizacion():
     texto = obtener_texto()
