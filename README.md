@@ -1,38 +1,4 @@
-LIBRERIAS
 
-NLTK (Natural Language Toolkit) fue diseñada para enseñanza e investigación en lingüística computacional.
-
-Incluye corpus clásicos (Brown, Reuters, Gutenberg, WordNet).
-
-Permite experimentar con cada etapa del PLN:
-
-Tokenización (varios métodos: word_tokenize, RegexpTokenizer, etc.).
-
-Stemming y lematización con WordNet.
-
-POS tagging (etiquetado gramatical).
-
-Parsing y árboles sintácticos.
-
-Ventaja: flexibilidad y profundidad académica.
-
-
-
-spaCy fue creada para entornos de producción.
-
-Implementada en Cython, lo que la hace muy rápida.
-
-Ofrece pipelines completos por idioma:
-
-Tokenización optimizada y específica por lengua.
-
-Lematización precisa.
-
-POS tagging estadístico.
-
-NER (reconocimiento de entidades).
-
-Ventaja: ideal para aplicaciones reales (chatbots, buscadores, análisis de sentimientos).
 
 
 TOKENIZACIÓN
