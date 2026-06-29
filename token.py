@@ -195,6 +195,8 @@ def aplicar_stemming():
                 p = p[:-2]
             elif p.endswith("an") and len(p) > 4:
                 p = p[:-2]
+            elif p.endswith("o") and len(p) > 4:
+                p = p[:-1]
             stems.append(p)
         mostrar_resultado("STEMMING (Raíces truncadas)", stems)
 
