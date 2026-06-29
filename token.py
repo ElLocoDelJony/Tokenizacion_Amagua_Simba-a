@@ -142,10 +142,39 @@ def aplicar_lematizacion():
     texto = obtener_texto()
     if texto:
         diccionario_lemas = {
+            # Sustantivos básicos
             "niños": "niño", "niñas": "niño", "perros": "perro", "gatos": "gato",
-            "estaban": "estar", "jugando": "jugar", "parques": "parque",
-            "disfrutaban": "disfrutar", "corriendo": "correr", "corre": "correr"
+            "parques": "parque",
+
+            # Verbos comunes (formas conjugadas → infinitivo)
+            "estaban": "estar","ladrando":"ladrar","ladro":"ladrar","estaba":"estar", "estoy": "estar", "estás": "estar", "está": "estar", "están": "estar",
+            "era": "ser", "eres": "ser", "soy": "ser", "somos": "ser", "son": "ser", "fue": "ser",
+            "iba": "ir", "vas": "ir", "voy": "ir", "vamos": "ir", "van": "ir", "fui": "ir",
+            "tenía": "tener", "tengo": "tener", "tienes": "tener", "tiene": "tener", "tenemos": "tener", "tienen": "tener",
+            "hacía": "hacer", "hago":("hacer"), 'haces':("hacer"), 'hace':("hacer"), 'hacemos':("hacer"), 'hacen':("hacer"),
+            'decía':("decir"), 'digo':("decir"), 'dices':("decir"), 'dice':("decir"), 'decimos':("decir"), 'dicen':("decir"),
+            "podía": "poder", "puedo": "poder", "puedes": "poder", "puede": "poder", "podemos": "poder", "pueden": "poder",
+            "quería": "querer", "quiero": "querer", "quieres": "querer", "quiere": "querer", "queremos": "querer", "quieren": "querer",
+            "sabía": "saber", "sé": "saber", "sabes": "saber", "sabe": "saber", "sabemos": "saber", "saben": "saber",
+            "daba": "dar", "doy": "dar", "das": "dar", "da": "dar", "damos": "dar", "dan": "dar",
+            "veía": "ver", "veo": "ver", "ves": "ver", "ve": "ver", "vemos": "ver", "ven": "ver",
+            "comía": "comer", "como": "comer", "comes": "comer", "come": "comer", "comemos": "comer", "comen": "comer",
+            "vivía": "vivir", "vivo": "vivir", "vives": "vivir", "vive": "vivir", "vivimos": "vivir", "viven": "vivir",
+            "trabajaba": "trabajar", "trabajo": "trabajar", "trabajas": "trabajar", "trabaja": "trabajar", "trabajamos": "trabajar", "trabajan": "trabajar",
+            "estudiaba": "estudiar", "estudio": "estudiar", "estudias": "estudiar", "estudia": "estudiar", "estudiamos": "estudiar", "estudian": "estudiar",
+            "jugando": "jugar", "juego": "jugar", "juegas": "jugar", "juega": "jugar", "jugamos": "jugar", "juegan": "jugar",
+            "disfrutaban": "disfrutar", "disfruto": "disfrutar", "disfrutas": "disfrutar", "disfruta": "disfrutar", "disfrutamos": "disfrutar", "disfrutan": "disfrutar",
+            "corriendo": "correr", "corro": "correr", "corres": "correr", "corre": "correr", "corremos": "correr", "corren": "correr",
+            "escribía": "escribir", "escribo": "escribir", "escribes": "escribir", "escribe": "escribir", "escribimos": "escribir", "escriben": "escribir",
+            "leía": "leer", "leo": "leer", "lees": "leer", "lee": "leer", "leemos": "leer", "leen": "leer",
+            "hablaba": "hablar", "hablo": "hablar", "hablas": "hablar", "habla": "hablar", "hablamos": "hablar", "hablan": "hablar",
+            "pensaba": "pensar", "pienso": "pensar", "piensas": "pensar", "piensa": "pensar", "pensamos": "pensar", "piensan": "pensar",
+            "sentía": "sentir", "siento": "sentir", "sientes": "sentir", "siente": "sentir", "sentimos": "sentir", "sienten": "sentir",
+            "dormía": "dormir", "duermo": "dormir", "duermes": "dormir", "duerme": "dormir", "dormimos": "dormir", "duermen": "dormir",
+            "abría": "abrir", "abro": "abrir", "abres": "abrir", "abre": "abrir", "abrimos": "abrir", "abren": "abrir",
+            "cerraba": "cerrar", "cierro": "cerrar", "cierras": "cerrar", "cierra": "cerrar", "cerramos": "cerrar", "cierran": "cerrar"
         }
+
         palabras = texto.lower().replace(".", "").replace(",", "").split()
         lemas = [diccionario_lemas.get(p, p) for p in palabras]
         mostrar_resultado("LEMATIZACIÓN (Lemas reales)", lemas)
